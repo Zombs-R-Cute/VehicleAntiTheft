@@ -49,7 +49,7 @@ namespace Zombs_R_CuteVehicleAntiTheft
         public static bool IsPlayerOwnerOrInGroup(InteractableVehicle vehicle, UnturnedPlayer player)
         {
             return vehicle.lockedOwner == player.CSteamID ||
-                vehicle.lockedGroup == player.SteamGroupID && vehicle.lockedGroup != CSteamID.Nil;
+                vehicle.lockedGroup == player.Player.quests.groupID && vehicle.lockedGroup != CSteamID.Nil;
         }
     }
 }
