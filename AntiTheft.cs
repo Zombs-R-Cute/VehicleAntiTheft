@@ -44,6 +44,17 @@ namespace Zombs_R_CuteVehicleAntiTheft
                     if(!allow)
                         UnturnedChat.Say(player, "You are not allowed to drive this vehicle!", Color.red);
                 };
+
+
+                VehicleManager.onVehicleCarjacked += (InteractableVehicle vehicle, Player instigatingPlayer,
+                    ref bool allow,
+                    ref Vector3 force, ref Vector3 torque) =>
+                {
+                    UnturnedPlayer player = UnturnedPlayer.FromPlayer(instigatingPlayer);
+                    allow = IsPlayerOwnerOrInGroup(vehicle, player) || Configuration.Instance.AllowAllVehiclesToBeCarjacked ||
+                            player.IsAdmin && Configuration.Instance.EnableAdminOverride ||
+                            vehicle.lockedOwner == CSteamID.Nil;
+                };
         }
 
         public static bool IsPlayerOwnerOrInGroup(InteractableVehicle vehicle, UnturnedPlayer player)
