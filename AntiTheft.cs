@@ -16,8 +16,8 @@ namespace Zombs_R_CuteVehicleAntiTheft
         {
             ConfiguratonIstance = Configuration.Instance;
             Logger.Log("AdminOverride is " + (Configuration.Instance.EnableAdminOverride?"Enabled":"Disabled"));
-            Logger.Log("Lockpicking is " + (Configuration.Instance.EnableAdminOverride?"Allowed":"Disallowed"));
-            Logger.Log("Swapping to driver seat is " + (Configuration.Instance.EnableAdminOverride?"Allowed":"Disallowed"));
+            Logger.Log("Lockpicking is " + (Configuration.Instance.AllowVehicleToBeLockpicked?"Allowed":"Disallowed"));
+            Logger.Log("Swapping to driver seat is " + (Configuration.Instance.AllowAnyPlayerToSwitchToDriverSeat?"Allowed":"Disallowed"));
 
             VehicleManager.onVehicleLockpicked += (InteractableVehicle vehicle, Player instigatingPlayer, ref bool allow) =>
             {
