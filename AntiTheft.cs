@@ -54,7 +54,7 @@ namespace Zombs_R_CuteVehicleAntiTheft
                 allow = Configuration.Instance.AllowAnyPlayerToSwitchToDriverSeat || seatIndex != 0 ||
                         IsPlayerOwnerOrInGroup(vehicle, player) ||
                         UnturnedPlayer.FromPlayer(instigatingPlayer).IsAdmin &&
-                        Configuration.Instance.EnableAdminOverride;
+                        Configuration.Instance.EnableAdminOverride||!vehicle.isLocked;
 
                 if (!allow)
                     UnturnedChat.Say(player, "You are not allowed to drive this vehicle!", Color.red);
