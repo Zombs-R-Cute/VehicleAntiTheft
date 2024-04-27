@@ -25,20 +25,14 @@ namespace Zombs_R_CuteVehicleAntiTheft
             VehicleManager.onVehicleLockpicked +=
                 (InteractableVehicle vehicle, Player instigatingPlayer, ref bool allow) =>
                 {
-                    UnturnedPlayer player = null;
-                    try
+                    if (instigatingPlayer == null && vehicle.isInsideSafezone)
                     {
-                        player = UnturnedPlayer.FromPlayer(instigatingPlayer);
-                    }
-                    catch (Exception e)
-                    {
-                        if (vehicle.isInsideSafezone)
-                        {
-                            allow = true;
-                            return;
-                        }
+                        allow = true;
+                        return;
                     }
 
+                    var player = UnturnedPlayer.FromPlayer(instigatingPlayer);
+                    
                     allow = Configuration.Instance.AllowVehicleToBeLockpicked ||
                             player.IsAdmin && Configuration.Instance.EnableAdminOverride;
 
