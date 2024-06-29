@@ -65,6 +65,20 @@ namespace Zombs_R_CuteVehicleAntiTheft
                         player.IsAdmin && Configuration.Instance.EnableAdminOverride ||
                         vehicle.lockedOwner == CSteamID.Nil;
             };
+            
+            UseableTire.onModifyTireRequested +=
+                (UseableTire useable, InteractableVehicle vehicle, int index, ref bool allow) =>
+                {
+                    allow = Configuration.Instance.AllowTiresToBeDamaged;
+                };
+            
+            VehicleManager.onDamageTireRequested += (CSteamID id, InteractableVehicle vehicle, int index,
+                ref bool allow, EDamageOrigin origin) =>
+            {
+                allow = Configuration.Instance.AllowTiresToBeDamaged;
+            };
+            
+            
         }
 
         public static bool IsPlayerOwnerOrInGroup(InteractableVehicle vehicle, UnturnedPlayer player)

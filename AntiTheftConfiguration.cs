@@ -8,6 +8,7 @@ namespace Zombs_R_CuteVehicleAntiTheft
         public bool AllowVehicleToBeLockpicked;
         public bool AllowAnyPlayerToSwitchToDriverSeat;
         public bool AllowAllVehiclesToBeCarjacked;
+        public bool AllowTiresToBeDamaged;
         
         public void LoadDefaults()
         {
@@ -15,6 +16,8 @@ namespace Zombs_R_CuteVehicleAntiTheft
             AllowVehicleToBeLockpicked = false;
             AllowAnyPlayerToSwitchToDriverSeat = false;
             AllowAllVehiclesToBeCarjacked = true;
+            AllowTiresToBeDamaged = false;
         }
+
     }
 }
